@@ -1,0 +1,307 @@
+// sudo mongod  // 1. start mongodb server
+
+
+// mondo        // 2 log in mongo-cli program
+
+use NAF;
+
+
+db.user.insertMany([
+    {
+        id: 1,
+        name: "Alice",
+        email:"Alice@naf.com",
+        password: "1"
+    },
+    {
+        id: 2,
+        name: "Bob",
+        email:"Bob@naf.com",
+        password: "1"
+    },
+    {
+        id: 3,
+        name: "Cat",
+        email:"Cat@naf.com",
+        password: "1"
+    },
+    {
+        id: 4,
+        name: "Dog",
+        email:"Dog@naf.com",
+        password: "1"
+    }
+]);
+
+
+
+db.section1.insert([
+    {
+        "id": 1,
+        "type": 1,
+        "question":{
+            "caption": "Sample Question 2",
+            "options":[
+                "option 1-1-1",
+                "option 1-1-2",
+                "option 1-1-3",
+                "option 1-1-4"
+            ],
+            "answer": null
+        }
+    },
+    {
+        "id": 2,
+        "type": 1,
+        "question":{
+            "caption": "Sample Question 2",
+            "options":[
+                "option 1-2-1",
+                "option 1-2-2",
+                "option 1-2-3",
+                "option 1-2-4"
+            ],
+            "answer": null
+        }
+    },
+    {
+        "id": 3,
+        "type": 1,
+        "question":{
+            "caption": "Sample Question 3",
+            "options":[
+                "option 1-2-1",
+                "option 1-2-2",
+                "option 1-2-3",
+                "option 1-2-4"
+            ],
+            "answer": null
+        }
+    },
+    {
+        "id": 4,
+        "type": 1,
+        "question":{
+            "caption": "Sample Question 4",
+            "options":[
+                "option 1-2-1",
+                "option 1-2-2",
+                "option 1-2-3",
+                "option 1-2-4"
+            ],
+            "answer": null
+        }
+    },
+    {
+        "id": 5,
+        "type": 1,
+        "question":{
+            "caption": "Sample Question 5",
+            "options":[
+                "option 1-2-1",
+                "option 1-2-2",
+                "option 1-2-3",
+                "option 1-2-4"
+            ],
+            "answer": null
+        }
+    },
+    {
+        "id": 6,
+        "type": 1,
+        "question":{
+            "caption": "Sample Question 6",
+            "options":[
+                "option 1-2-1",
+                "option 1-2-2",
+                "option 1-2-3",
+                "option 1-2-4"
+            ],
+            "answer": null
+        }
+    }
+]);
+
+
+
+
+
+
+db.section2.insert([
+    {
+        "id": 1,
+        "type": 2,
+        "question":{
+            "caption": "Sample Question 2-1",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY",
+            "options":[
+                "option 2-1-1",
+                "option 2-1-2",
+                "option 2-1-3",
+                "option 2-1-4"
+            ],
+            "answer": null
+
+        }
+    },
+    {
+        "id": 2,
+        "type": 2,
+        "question":{
+            "caption": "Sample Question 2-2",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY",
+            "options":[
+                "option 2-2-1",
+                "option 2-2-2",
+                "option 2-2-3",
+                "option 2-2-4"
+            ],
+            "answer": null
+
+        }
+    },
+    {
+        "id": 3,
+        "type": 2,
+        "question":{
+            "caption": "Sample Question 2-3",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY",
+            "options":[
+                "option 2-2-1",
+                "option 2-2-2",
+                "option 2-2-3",
+                "option 2-2-4"
+            ],
+            "answer": null
+
+        }
+    },
+    {
+        "id": 4,
+        "type": 2,
+        "question":{
+            "caption": "Sample Question 2-4",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY",
+            "options":[
+                "option 2-2-1",
+                "option 2-2-2",
+                "option 2-2-3",
+                "option 2-2-4"
+            ],
+            "answer": null
+
+        }
+    },
+    {
+        "id": 5,
+        "type": 2,
+        "question":{
+            "caption": "Sample Question 2-5",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY",
+            "options":[
+                "option 2-2-1",
+                "option 2-2-2",
+                "option 2-2-3",
+                "option 2-2-4"
+            ],
+            "answer": null
+
+        }
+    },
+    {
+        "id": 6,
+        "type": 2,
+        "question":{
+            "caption": "Sample Question 2-6",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY",
+            "options":[
+                "option 2-2-1",
+                "option 2-2-2",
+                "option 2-2-3",
+                "option 2-2-4"
+            ],
+            "answer": null
+
+        }
+    }
+])
+
+
+
+
+
+
+db.section3.insert([
+    {
+        "id": 1,
+        "type": 3,
+        "question":{
+            "caption": "Sample Question 3-1",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+        },
+        "answer": null
+    },
+    {
+        "id": 2,
+        "type": 3,
+        "question":{
+            "caption": "Sample Question 3-2",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+        },
+        "answer": null
+    },
+    {
+        "id": 3,
+        "type": 3,
+        "question":{
+            "caption": "Sample Question 3-2",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+        },
+        "answer": null
+    },
+    {
+        "id": 4,
+        "type": 3,
+        "question":{
+            "caption": "Sample Question 3-2",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+        },
+        "answer": null
+    },
+    {
+        "id": 5,
+        "type": 3,
+        "question":{
+            "caption": "Sample Question 3-2",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+        },
+        "answer": null
+    },
+    {
+        "id": 6,
+        "type": 3,
+        "question":{
+            "caption": "Sample Question 3-2",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+        },
+        "answer": null
+    },
+    {
+        "id": 7,
+        "type": 3,
+        "question":{
+            "caption": "Sample Question 3-2",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+        },
+        "answer": null
+    },
+    {
+        "id": 8,
+        "type": 3,
+        "question":{
+            "caption": "Sample Question 3-2",
+            "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+        },
+        "answer": null
+    }
+])
