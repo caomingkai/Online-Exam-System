@@ -2,32 +2,22 @@
     "users":
     [
         {
-            "id": 1,
-            "name": "Alice",
             "email":"Alice@naf.com",
             "password": "1"
         },
         {
-            "id": 2,
-            "name": "Bob",
             "email":"Bob@naf.com",
             "password": "1"
         },
         {
-            "id": 3,
-            "name": "Cat",
             "email":"Cat@naf.com",
             "password": "1"
         },
         {
-            "id": 4,
-            "name": "Dog",
             "email":"Dog@naf.com",
             "password": "1"
         },
         {
-            "id": 5,
-            "name": "a",
             "email":"a@a.com",
             "password": "1"
         }

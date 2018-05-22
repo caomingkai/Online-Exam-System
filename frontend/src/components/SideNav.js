@@ -6,12 +6,12 @@ import { connect } from 'react-redux'
 
 
 const IndicatorView = ({id, type, answer})=> {
-    const blank = answer===null ? "blank" : ""
+    const flag = answer==="" ? "unsolved" : "finished"
     const targetEle = '#question' +type+ '-' +id
     return(
         <div>
             <ScrollIntoView selector={targetEle}>
-                {"problem" + id} : {blank}
+                {"problem" + id} : {flag}
             </ScrollIntoView>
         </div>
     )

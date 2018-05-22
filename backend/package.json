@@ -4,12 +4,13 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "mongodb": "^3.1.0-beta4"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

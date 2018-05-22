@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk'
 
 import {Provider} from 'react-redux'
 import Welcome from './components/Welcome'
-import {SignUp} from './components/SignUp'
+import SignUp from './components/SignUp'
 import Section from './components/Section'
 import {initialState, reducer} from './reducers/reducer'
 

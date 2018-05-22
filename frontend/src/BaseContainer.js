@@ -1,6 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
-import { Link, Redirect, withRouter } from 'react-router-dom'
+import { Link, Redirect, withRouter,Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Playground from './components/Playground'
 import {examFetchBigin, examFetchResolve, examFetchFail, exitExam } from './actions/actions'
@@ -21,7 +21,7 @@ class Base extends Component{
         const { dispatch } = this.props;
         dispatch(examFetchBigin());
 
-        fetch("http://localhost:3003/payload")
+        fetch("http://localhost:3002/payload")
         .then(function(response) {
             return response.json() }
         ).then(
@@ -50,15 +50,16 @@ class Base extends Component{
 
 
     userExitExam=()=>{
-        let { dispatch } = this.props;
+        let { dispatch, history } = this.props;
         dispatch(exitExam());
+        history.push('/');
     }
 
 
     render(){
         const { isFetching, didInvalidate, data, isValidUser } = this.props
         console.log(isValidUser);
-        const ConditionalRedirect = isValidUser ? "" : <Redirect to="/" />
+        const ConditionalRedirect = isValidUser ? "" : <Switch><Redirect to="/" /></Switch>
         let PlaygroundPlaceholder;
         if ( isFetching ) {
             PlaygroundPlaceholder = <div> <div> </div>Loading questions... </div>
@@ -103,5 +104,5 @@ const mapStateToProps = (state)=>({
 // 但如果 mapDispatchToProps 显示的传入了，presentational component
 // 中就没有这个 dispatch props了
 // 如果仍然需要这个dispatch prop，那么可以在mapDispatchToProps中与其他函数一起显式的返回
-const BaseContainer = connect(mapStateToProps)(Base)
+const BaseContainer = withRouter(connect(mapStateToProps)(Base))
 export default BaseContainer

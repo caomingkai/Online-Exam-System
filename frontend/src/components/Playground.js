@@ -11,6 +11,7 @@ const Playground = ()=>{
                     <Switch>
                         < Route path='/exam/:sectionNum' component={Section} />
                         < Redirect to='/exam/1'  />
+                        
                     </Switch>
 
                 </div>

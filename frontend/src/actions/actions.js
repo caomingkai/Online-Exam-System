@@ -35,7 +35,7 @@ const reject=(error)=>({
 const asynchorousFetchUserDB = ()=>{
     return (dispatch)=>{
         dispatch(biginFetch());
-        fetch("http://localhost:3000/users/")
+        fetch("http://localhost:3002/users/")
         .then(
             (res) => res.json()
         ).then(

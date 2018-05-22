@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect , withRouter} from 'react-router-dom'
+import { Link, Redirect , Switch, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import {readEmail, readPassword, asynchorousFetchUserDB} from '../actions/actions'
 
@@ -33,7 +33,7 @@ const WelcomeView =({isValidUser, email, password, readEmail, readPassword, logi
     return (
         <div>
             <h1>Login Page </h1>
-            <label>Email:</label><input onBlur={readEmail} name='email' placeholder="input email" value="a@a.com"/>
+            <label>Email:</label><input onBlur={readEmail} name='email' placeholder="input email" value="Alice@naf.com"/>
             <label>Password:</label><input onBlur={readPassword} name='password' placeholder="input password" />
             <button onClick={loginHandler}> Login </button>
             {nextPage}

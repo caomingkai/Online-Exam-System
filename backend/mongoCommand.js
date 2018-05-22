@@ -6,30 +6,26 @@
 use NAF;
 
 
-db.user.insertMany([
+db.user.insert([
     {
-        id: 1,
-        name: "Alice",
-        email:"Alice@naf.com",
-        password: "1"
+        "email":"Alice@naf.com",
+        "password": "1"
     },
     {
-        id: 2,
-        name: "Bob",
-        email:"Bob@naf.com",
-        password: "1"
+        "email":"Bob@naf.com",
+        "password": "1"
     },
     {
-        id: 3,
-        name: "Cat",
-        email:"Cat@naf.com",
-        password: "1"
+        "email":"Cat@naf.com",
+        "password": "1"
     },
     {
-        id: 4,
-        name: "Dog",
-        email:"Dog@naf.com",
-        password: "1"
+        "email":"Dog@naf.com",
+        "password": "1"
+    },
+    {
+        "email":"a@a.com",
+        "password": "1"
     }
 ]);
 
@@ -46,9 +42,9 @@ db.section1.insert([
                 "option 1-1-2",
                 "option 1-1-3",
                 "option 1-1-4"
-            ],
-            "answer": null
-        }
+            ]
+        },
+        "answer": ""
     },
     {
         "id": 2,
@@ -60,9 +56,9 @@ db.section1.insert([
                 "option 1-2-2",
                 "option 1-2-3",
                 "option 1-2-4"
-            ],
-            "answer": null
-        }
+            ]
+        },
+        "answer": ""
     },
     {
         "id": 3,
@@ -74,9 +70,9 @@ db.section1.insert([
                 "option 1-2-2",
                 "option 1-2-3",
                 "option 1-2-4"
-            ],
-            "answer": null
-        }
+            ]
+        },
+        "answer": ""
     },
     {
         "id": 4,
@@ -88,9 +84,9 @@ db.section1.insert([
                 "option 1-2-2",
                 "option 1-2-3",
                 "option 1-2-4"
-            ],
-            "answer": null
-        }
+            ]
+        },
+        "answer": ""
     },
     {
         "id": 5,
@@ -102,9 +98,9 @@ db.section1.insert([
                 "option 1-2-2",
                 "option 1-2-3",
                 "option 1-2-4"
-            ],
-            "answer": null
-        }
+            ]
+        },
+        "answer": ""
     },
     {
         "id": 6,
@@ -116,9 +112,9 @@ db.section1.insert([
                 "option 1-2-2",
                 "option 1-2-3",
                 "option 1-2-4"
-            ],
-            "answer": null
-        }
+            ]
+        },
+        "answer": ""
     }
 ]);
 
@@ -139,10 +135,9 @@ db.section2.insert([
                 "option 2-1-2",
                 "option 2-1-3",
                 "option 2-1-4"
-            ],
-            "answer": null
-
-        }
+            ]
+        },
+        "answer": ""
     },
     {
         "id": 2,
@@ -155,10 +150,10 @@ db.section2.insert([
                 "option 2-2-2",
                 "option 2-2-3",
                 "option 2-2-4"
-            ],
-            "answer": null
+            ]
+        },
+        "answer": ""
 
-        }
     },
     {
         "id": 3,
@@ -171,10 +166,10 @@ db.section2.insert([
                 "option 2-2-2",
                 "option 2-2-3",
                 "option 2-2-4"
-            ],
-            "answer": null
+            ]
+        },
+        "answer": ""
 
-        }
     },
     {
         "id": 4,
@@ -187,10 +182,10 @@ db.section2.insert([
                 "option 2-2-2",
                 "option 2-2-3",
                 "option 2-2-4"
-            ],
-            "answer": null
+            ]
+        },
+        "answer": ""
 
-        }
     },
     {
         "id": 5,
@@ -203,10 +198,10 @@ db.section2.insert([
                 "option 2-2-2",
                 "option 2-2-3",
                 "option 2-2-4"
-            ],
-            "answer": null
+            ]
+        },
+        "answer": ""
 
-        }
     },
     {
         "id": 6,
@@ -219,10 +214,10 @@ db.section2.insert([
                 "option 2-2-2",
                 "option 2-2-3",
                 "option 2-2-4"
-            ],
-            "answer": null
+            ]
+        },
+        "answer": ""
 
-        }
     }
 ])
 
@@ -239,7 +234,7 @@ db.section3.insert([
             "caption": "Sample Question 3-1",
             "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
         },
-        "answer": null
+        "answer": ""
     },
     {
         "id": 2,
@@ -248,7 +243,7 @@ db.section3.insert([
             "caption": "Sample Question 3-2",
             "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
         },
-        "answer": null
+        "answer": ""
     },
     {
         "id": 3,
@@ -257,7 +252,7 @@ db.section3.insert([
             "caption": "Sample Question 3-2",
             "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
         },
-        "answer": null
+        "answer": ""
     },
     {
         "id": 4,
@@ -266,7 +261,7 @@ db.section3.insert([
             "caption": "Sample Question 3-2",
             "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
         },
-        "answer": null
+        "answer": ""
     },
     {
         "id": 5,
@@ -275,7 +270,7 @@ db.section3.insert([
             "caption": "Sample Question 3-2",
             "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
         },
-        "answer": null
+        "answer": ""
     },
     {
         "id": 6,
@@ -284,7 +279,7 @@ db.section3.insert([
             "caption": "Sample Question 3-2",
             "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
         },
-        "answer": null
+        "answer": ""
     },
     {
         "id": 7,
@@ -293,7 +288,7 @@ db.section3.insert([
             "caption": "Sample Question 3-2",
             "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
         },
-        "answer": null
+        "answer": ""
     },
     {
         "id": 8,
@@ -302,6 +297,6 @@ db.section3.insert([
             "caption": "Sample Question 3-2",
             "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
         },
-        "answer": null
+        "answer": ""
     }
 ])

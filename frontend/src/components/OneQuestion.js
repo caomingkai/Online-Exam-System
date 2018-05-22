@@ -23,15 +23,23 @@ const OneQuestion = ({id, type, question, thisQuestion, dispatch})=>{
     console.log(thisQuestion);
     const oldAnswer= thisQuestion.answer
 
-    const optionItems = options.map(
-        (item, index) => <div key={index} >
-                            <input onClick={setAnswerHandler} type="radio"
-                                   name={id+"-"+type}
-                                   defaultChecked={item===oldAnswer}
-                                   value={item} />
-                            {item}
-                         </div>
-    );
+    const optionItems = options ? options.map(
+            (item, index) =>
+                <div key={index} >
+                    <input onClick={setAnswerHandler} type="radio"
+                           name={id+"-"+type}
+                           defaultChecked={item===oldAnswer}
+                           value={item} />
+                    {item}
+                 </div>
+        ):(
+            <div>
+                <textarea onBlur={setAnswerHandler} type="radio"
+                          name={id+"-"+type}
+                          defaultValue={oldAnswer} >
+                 </textarea>
+            </div>
+        )
     const optionsView = <div> {optionItems}  </div>
 
     return (
