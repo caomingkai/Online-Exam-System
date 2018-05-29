@@ -7,7 +7,6 @@ const readEmail=(value)=>({
     value: value
 })
 
-
 export const READ_PASSWORD_VALUE = 'READ_PASSWORD_VALUE'
 const readPassword=(value)=>({
     type: READ_PASSWORD_VALUE,
@@ -32,16 +31,27 @@ const reject=(error)=>({
 })
 
 // Asynchorous action creator
-const asynchorousFetchUserDB = ()=>{
+const asynchorousFetchUserDB = (email, password)=>{
+    const loginInfo = {
+        email: email,
+        password: password
+    }
+
     return (dispatch)=>{
         dispatch(biginFetch());
-        fetch("http://localhost:3002/users/")
+        fetch("http://localhost:3002/auth/login",{
+            method: 'POST',
+            body: JSON.stringify(loginInfo),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
         .then(
-            (res) => res.json()
+            res => res.json()
         ).then(
-            (res)=>{
+            res=>{
                 console.log(res);
-                return dispatch(resolve(res.users) )
+                return dispatch(resolve(res) )
             }
         ).catch(
             (error)=>{
@@ -58,7 +68,7 @@ const examFetchBigin=()=>({
 })
 
 export const EXAM_FETCH_SUCCEED = 'EXAM_FETCH_SUCCEED'
-const examFetchResolve=(res)=>({
+const examFetchSucceed=(res)=>({
     type: EXAM_FETCH_SUCCEED,
     value: res
 })
@@ -74,7 +84,6 @@ const exitExam =()=>({
     type: EXIT_EXAM,
 })
 
-
 export const SET_ANSWEWR = 'SET_ANSWEWR'
 const setAnswer =(id, questionType, option)=>({
     type: SET_ANSWEWR,
@@ -84,4 +93,50 @@ const setAnswer =(id, questionType, option)=>({
 })
 
 
-export {readEmail, readPassword, asynchorousFetchUserDB, biginFetch, resolve, reject, examFetchBigin, examFetchResolve, examFetchFail, exitExam, setAnswer}
+export const ANSWEWR_SEND_BEGIN = 'ANSWEWR_SEND_BEGIN'
+const answerSendBigin=()=>({
+    type: ANSWEWR_SEND_BEGIN
+})
+
+export const ANSWEWR_SEND_SUCCEED = 'ANSWEWR_SEND_SUCCEED'
+const answerSendSucceed =(res)=>({
+    type: ANSWEWR_SEND_SUCCEED,
+    value: res
+})
+
+export const ANSWEWR_SEND_FAIL= 'ANSWEWR_SEND_FAIL'
+const answerSendFail =(error)=>({
+    type: ANSWEWR_SEND_FAIL,
+    value: error
+
+})
+
+const asynchorousSendAnswer=(questionPayload)=>{
+    console.log(questionPayload);
+    return (dispatch)=>{
+        dispatch(answerSendBigin());
+
+        fetch("http://localhost:3002/api/exam",{
+            method: 'POST',
+            body: JSON.stringify(questionPayload),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then( res=>res.json() )
+        .then( res=>{
+            console.log(res);
+            if( res.status)
+                dispatch(answerSendSucceed(res.score) )
+            else
+                dispatch(answerSendFail({error: res.error}) )
+        })
+        .catch( error=>{
+            console.log(error);
+            dispatch(answerSendFail(error) )
+        })
+    }
+}
+
+
+export {readEmail, readPassword, asynchorousFetchUserDB, biginFetch, resolve, reject, examFetchBigin, examFetchSucceed, examFetchFail, exitExam, setAnswer, asynchorousSendAnswer}

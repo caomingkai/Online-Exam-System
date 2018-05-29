@@ -300,3 +300,164 @@ db.section3.insert([
         "answer": ""
     }
 ])
+
+
+
+
+db.answer1.insert([
+    {
+        "id": 1,
+        "type": 1,
+        "score": 1,
+        "answer": "option 1-1-1"
+    },
+    {
+        "id": 2,
+        "type": 1,
+        "score": 1,
+        "answer": "option 1-1-1"
+    },
+    {
+        "id": 3,
+        "type": 1,
+        "score": 1,
+        "answer": "option 1-1-1"
+    },
+    {
+        "id": 4,
+        "type": 1,
+        "score": 1,
+        "answer": "option 1-1-1"
+    },
+    {
+        "id": 5,
+        "type": 1,
+        "score": 1,
+        "answer": "option 1-1-1"
+    },
+    {
+        "id": 6,
+        "type": 1,
+        "score": 1,
+        "answer": "option 1-1-1"
+    },
+    {
+        "id": 7,
+        "type": 1,
+        "score": 1,
+        "answer": "option 1-1-1"
+    },
+    {
+        "id": 8,
+        "type": 1,
+        "score": 1,
+        "answer": "option 1-1-1"
+    },
+
+])
+
+
+db.answer2.insert([
+    {
+        "id": 1,
+        "type": 2,
+        "score": 2,
+        "answer": "option 2-2-2"
+    },
+    {
+        "id": 2,
+        "type": 2,
+        "score": 2,
+        "answer": "option 2-2-2"
+    },
+    {
+        "id": 3,
+        "type": 2,
+        "score": 2,
+        "answer": "option 2-2-2"
+    },
+    {
+        "id": 4,
+        "type": 2,
+        "score": 2,
+        "answer": "option 2-2-2"
+    },
+    {
+        "id": 5,
+        "type": 2,
+        "score": 2,
+        "answer": "option 2-2-2"
+    },
+    {
+        "id": 6,
+        "type": 2,
+        "score": 2,
+        "answer": "option 2-2-2"
+    },
+    {
+        "id": 7,
+        "type": 2,
+        "score": 2,
+        "answer": "option 2-2-2"
+    },
+    {
+        "id": 8,
+        "type": 2,
+        "score": 2,
+        "answer": "option 2-2-2"
+    },
+
+])
+
+
+db.answer3.insert([
+    {
+        "id": 1,
+        "type": 3,
+        "score": 3,
+        "answer": ""
+    },
+    {
+        "id": 2,
+        "type": 3,
+        "score": 3,
+        "answer": ""
+    },
+    {
+        "id": 3,
+        "type": 3,
+        "score": 3,
+        "answer": ""
+    },
+    {
+        "id": 4,
+        "type": 3,
+        "score": 3,
+        "answer": ""
+    },
+    {
+        "id": 5,
+        "type": 3,
+        "score": 3,
+        "answer": ""
+    },
+    {
+        "id": 6,
+        "type": 3,
+        "score": 3,
+        "answer": ""
+    },
+    {
+        "id": 7,
+        "type": 3,
+        "score": 3,
+        "answer": ""
+    },
+    {
+        "id": 8,
+        "type": 3,
+        "score": 3,
+        "answer": ""
+    },
+
+])

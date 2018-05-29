@@ -4,9 +4,14 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "bcrypt": "^2.0.1",
+    "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "mongodb": "^3.1.0-beta4"
+    "jsonwebtoken": "^8.2.1",
+    "mongodb": "^3.1.0-beta4",
+    "mongoose": "^5.1.2",
+    "mongoose-simple-random": "^0.4.1"
   },
   "devDependencies": {},
   "scripts": {

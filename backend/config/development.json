@@ -1,0 +1,9 @@
+{
+  "host": "localhost",
+  "devURL": "http://localhost:3002",
+  "env": "development",
+  "dbURL": "mongodb://localhost:27017/NAF",
+  "secret": "This is Mingkai's secret for JWT",
+  "types": [1, 2, 3],
+  "numbers": [5, 5, 5]
+}

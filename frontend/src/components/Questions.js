@@ -6,6 +6,9 @@ import OneQuestion from './OneQuestion'
 const Questions= ({questionArr, targetType})=>{
     console.log(targetType);
     console.log(questionArr);
+    questionArr.sort( (item1, item2)=>{
+        return item1.id - item2.id
+    })
     const listItems = questionArr.map((item)=>
         <OneQuestion    key={item.id + 10*item.type}
                         id={item.id}

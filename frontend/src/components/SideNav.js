@@ -5,13 +5,13 @@ import ScrollIntoView from 'react-scroll-into-view'
 import { connect } from 'react-redux'
 
 
-const IndicatorView = ({id, type, answer})=> {
+const IndicatorView = ({id, index, type, answer})=> {
     const flag = answer==="" ? "unsolved" : "finished"
     const targetEle = '#question' +type+ '-' +id
     return(
         <div>
             <ScrollIntoView selector={targetEle}>
-                {"problem" + id} : {flag}
+                {"problem" + index} : {flag}
             </ScrollIntoView>
         </div>
     )
@@ -20,11 +20,11 @@ const IndicatorView = ({id, type, answer})=> {
 
 const SectionView =({questionArr, index, handlerSectionClick, show})=>{
     const flag = show ? "block" : "none"
-    console.log(show);
     const displayStyle = { display: flag }
     const lists = questionArr.map(
-        (item)=>(<IndicatorView key={item.id}
+        (item, index)=>(<IndicatorView key={item.id}
                              id={item.id}
+                             index = {index+1}
                              type={item.type}
                              answer={item.answer} />)
     )
@@ -66,22 +66,24 @@ class SideNav extends Component{
     componentDidMount(){
         this.sectionTotal = Object.keys(this.props.questionSet).length
         let sectionsOpen = new Array(this.sectionTotal).fill(false);
-        sectionsOpen[0] = true;
         this.setState({
             showArr: sectionsOpen
         });
+    }
+
+    componentWillUnmount(){
+        this.setState({
+            showArr: []
+        })
     }
 
     handlerSectionClick=(index)=>{
         const oldValue = this.state.showArr
         const newValue = new Array(this.sectionTotal).fill(false);
         newValue[index] = true;
-        console.log(index);
-        console.log(newValue);
         this.setState({
             showArr: newValue
         });
-
     }
 
     render(){
@@ -90,8 +92,7 @@ class SideNav extends Component{
                     <SectionList questionSet={this.props.questionSet}
                                  sectionTotal={this.sectionTotal}
                                  handlerSectionClick={this.handlerSectionClick}
-                                 showArr = {this.state.showArr}/>
-                    <button> Back to Top </button>
+                                 showArr = {this.state.showArr} />
                </div>
     }
 }

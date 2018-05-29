@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import fetch from 'cross-fetch'
+import Auth from '../utils/Auth'
 
 const SignUp = ({history})=>{
 
@@ -25,7 +26,7 @@ const SignUp = ({history})=>{
             return;
         }
 
-        fetch("http://localhost:3002/users", {
+        fetch("http://localhost:3002/auth/signup", {
                 method: 'POST',
                 body: JSON.stringify(userInfo),
                 headers: {
@@ -37,10 +38,10 @@ const SignUp = ({history})=>{
         ).then(
             (res)=>{
                 console.log(res);
-                if(res.status)
-                    history.push('/exam/1')
+                Auth.authenticateUser(res.token, res.email)
+                if(res.token)
+                    history.push('/api/exam')
                 else{
-                    alert("inserted failed");
                     return;
                 }
 
