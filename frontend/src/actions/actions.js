@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch'
-
+import Auth from '../utils/Auth'
 
 export const READ_EMAIL_VALUE = 'READ_EMAIL_VALUE'
 const readEmail=(value)=>({
@@ -51,6 +51,7 @@ const asynchorousFetchUserDB = (email, password)=>{
         ).then(
             res=>{
                 console.log(res);
+                Auth.authenticateUser(res.token, res.email)
                 return dispatch(resolve(res) )
             }
         ).catch(
@@ -80,9 +81,10 @@ const examFetchFail=(error)=>({
 })
 
 export const EXIT_EXAM = 'EXIT_EXAM'
-const exitExam =()=>({
-    type: EXIT_EXAM,
-})
+const exitExam =()=>{
+    Auth.deAuthenticateUser();
+    return {type: EXIT_EXAM}
+}
 
 export const SET_ANSWEWR = 'SET_ANSWEWR'
 const setAnswer =(id, questionType, option)=>({
@@ -99,10 +101,13 @@ const answerSendBigin=()=>({
 })
 
 export const ANSWEWR_SEND_SUCCEED = 'ANSWEWR_SEND_SUCCEED'
-const answerSendSucceed =(res)=>({
-    type: ANSWEWR_SEND_SUCCEED,
-    value: res
-})
+const answerSendSucceed =(res)=>{
+    Auth.deAuthenticateUser();
+    return{
+        type: ANSWEWR_SEND_SUCCEED,
+        value: res
+    }
+}
 
 export const ANSWEWR_SEND_FAIL= 'ANSWEWR_SEND_FAIL'
 const answerSendFail =(error)=>({

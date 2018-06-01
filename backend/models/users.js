@@ -62,15 +62,6 @@ UserSchema.methods.generateJwt = function(){
     return jwt.sign({
         email: this.email,
         exp: parseInt( expire.getTime() / 1000 ),
-        test1:"sdfsdf",
-        test2:"sdsdfsdfsdfsdfsdfsdfsdfsdffsdf",
-        test3:"sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf",
-        test4:"sdfsdfsdfsdfsdfsdfsdfsdfsdfsdf",
-        test5:"sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf",
-        test6:"sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf",
-        test7:"sdsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdffsdf",
-        test8:"sdfssdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfdf",
-        test9:"sdfssdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfdf",
     }, config.secret);
 }
 

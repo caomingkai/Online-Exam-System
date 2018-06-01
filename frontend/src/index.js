@@ -25,7 +25,7 @@ ReactDOM.render(
             <div>
                 <Route exact path="/" component={Login}/>
                 <Route path="/exam" component={Base}/>
-                <Route path="/signup" component={SignUp}/>
+                <Route path="/auth/signup" component={SignUp}/>
                 <Route path="/score" component={Score}/>
             </div>
         </ Router>

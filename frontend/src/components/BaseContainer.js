@@ -4,7 +4,7 @@ import { Link, Redirect, withRouter,Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Playground from './Playground'
 import {examFetchBigin, examFetchSucceed, examFetchFail, exitExam } from '../actions/actions'
-
+import Auth from '../utils/Auth'
 
 class Base extends Component{
 
@@ -27,13 +27,16 @@ class Base extends Component{
                     timer: this.state.timer-1000
                 });
             }
-
         }, 1000);
 
 
         const { dispatch } = this.props;
         dispatch(examFetchBigin());
-        fetch("http://localhost:3002/api/exam")
+        fetch("http://localhost:3002/api/exam",{
+            headers: {
+              'Authorization': 'bearer ' + Auth.getToken(),
+            }
+        })
         .then(function(response) {
             return response.json() }
         ).then(
@@ -43,8 +46,6 @@ class Base extends Component{
         ).catch(
             error=> { dispatch(examFetchFail(error)); }
         )
-
-
     }
 
     componentWillUnmount(){
@@ -65,7 +66,7 @@ class Base extends Component{
     render(){
         const { isFetching, didInvalidate, data, isValidUser, history } = this.props
         let PlaygroundPlaceholder;
-        if(this.state.timeOver) {
+        if(this.state.timeOver || this.props.isSubmitted) {
             PlaygroundPlaceholder = <Redirect replace={true} to='/score' />;
         }else{
             if ( isFetching ) {
@@ -79,8 +80,8 @@ class Base extends Component{
             }
         }
 
-
-        return (
+        const view = isValidUser ?
+        (
             <div className="base" >
                 <div className="caption">
                     <span> NAF </span>
@@ -92,7 +93,16 @@ class Base extends Component{
                     {PlaygroundPlaceholder}
                 </div>
             </div>
+        ):
+        (
+            <div>
+                <div> Invalid request: needs login credentials </div>
+                <Link to='/' > Login </Link>
+            </div>
         )
+
+        return view
+
     }
 }
 
@@ -102,7 +112,8 @@ const mapStateToProps = (state)=>({
     isFetching: state.examData.isFetching,
     didInvalidate: state.examData.didInvalidate,
     data: state.examData.data,
-    isValidUser: state.isValidUser
+    isValidUser: state.isValidUser,
+    isSubmitted: state.scoreData.isSubmitted
 })
 
 // https://redux.js.org/faq/react-redux#why-dont-i-have-this-props-dispatch-available-in-my-connected-component

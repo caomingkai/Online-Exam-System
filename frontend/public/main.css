@@ -1,0 +1,112 @@
+/* body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+} */
+
+
+body {
+    font-family: "Lato", sans-serif;
+    background-color: 	#C0C0C0;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    font-size: 40;
+    text-align: center;
+    background-color:	#F0FFFF;
+}
+.caption{
+    z-index: 1;
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    background-color: #66CDAA;
+    text-align:center;
+}
+
+.sidenav {
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    top: 50px;
+    right: 0;
+    background-color:	#F0FFFF;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    height: 90%;
+    width: 70%;
+    position: fixed;
+    /* top: 50px; */
+    left: 0;
+    overflow:auto;
+
+    background-color: #F0FFFF;
+    padding: 50px;
+    margin-right: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

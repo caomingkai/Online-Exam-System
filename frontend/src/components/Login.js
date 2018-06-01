@@ -32,16 +32,18 @@ const mapDispatchToProps = (dispatch)=>{
 const LoginView =({isValidUser, email, password, prompt, readEmail, readPassword, loginHandler})=>{
     const nextPage = isValidUser ?  <Redirect replace={true} to="/exam" /> : " " ;
     return (
-        <div>
-            <h1>Login Page </h1>
-            <label>Email:</label><input  type="text" onBlur={readEmail} name='email' placeholder="input email" defaultValue="a@123.com"/>
-            <label>Password:</label><input onBlur={readPassword} name='password' placeholder="input password" />
-            <button onClick={()=>{loginHandler(email, password)}}> Login </button>
-            {nextPage}
-            <Link to="/auth/signup" > Sign Up </Link>
-            <Link to="/api/exam" > Enter Exam </Link>
-
-            <p>{prompt}</p>
+        <div className="container">
+            <div className="form-signin">
+                <h2 className="form-signin-heading">Online Exam System</h2>
+                <label htmlFor="inputEmail" className="sr-only">Email address</label>
+                <input  type="email" id="inputEmail" className="form-control" onBlur={readEmail} name='email' placeholder="input email" defaultValue="a@123.com" required autoFocus />
+                <label htmlFor="inputPassword" className="sr-only">Password</label>
+                <input type="password" id="inputPassword" className="form-control" onBlur={readPassword} name='password' placeholder="input password" />
+                <button className="btn btn-lg btn-primary btn-block" to="/auth/signup" onClick={()=>{loginHandler(email, password)}}> Login </button>
+                <Link target="_blank" className="btn btn-lg btn-primary btn-block" to="/auth/signup" > Sign Up </Link>
+                {nextPage}
+                <p className="alert-indicator" >{prompt}</p>
+            </div>
         </div>
     )
 }

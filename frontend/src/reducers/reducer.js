@@ -75,7 +75,7 @@ const reducer =( state=initialState, action )=>{
         case ANSWEWR_SEND_BEGIN:
             return { ...state, scoreData:{...state.scoreData, isFetching: true}};
         case ANSWEWR_SEND_SUCCEED:
-            return { ...state, scoreData:{...state.scoreData, isFetching: false, isSubmitted: true,  score: value}};
+            return { ...state, isValidUser: false, email: '', password:'', scoreData:{...state.scoreData, isFetching: false, isSubmitted: true,  score: value}};
         case ANSWEWR_SEND_FAIL:
             return { ...state, scoreData:{...state.scoreData, isFetching: false, didInvalidate: true}};
         default:

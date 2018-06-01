@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import fetch from 'cross-fetch'
 import Auth from '../utils/Auth'
+import {resolve} from '../actions/actions'
 
-const SignUp = ({history})=>{
-
+const SignUp = ({history, prompt, dispatch})=>{
     let userInfo = {
         email: "",
         password: ""
@@ -20,7 +21,6 @@ const SignUp = ({history})=>{
 
     const submitHandler= (e)=>{
         e.preventDefault();
-
         if( userInfo.email==="" || userInfo.password==="" ){
             alert("Error: empty value");
             return;
@@ -37,11 +37,13 @@ const SignUp = ({history})=>{
             (res) => res.json()
         ).then(
             (res)=>{
-                console.log(res);
+                if( !res.status ) alert(res.message)
+                dispatch( resolve(res) )
                 Auth.authenticateUser(res.token, res.email)
-                if(res.token)
-                    history.push('/api/exam')
-                else{
+                if(res.token){
+                    console.log(Auth.getToken());
+                    history.push('/exam')
+                }else{
                     return;
                 }
 
@@ -54,18 +56,20 @@ const SignUp = ({history})=>{
     }
 
     return (
-        <div>
-            <h1>SignUp Page </h1>
-            <form onSubmit={submitHandler} method="POST">
-                <label>Email</label>
-                <input type="text" onBlur={readEmail} name="email" />
-                <label>Password</label>
-                <input type="text" onBlur={readPassword} name="password" />
-                <input type="submit" value="Submit" />
+        <div className="container">
+            <form className="form-signin" onSubmit={submitHandler} method="POST" >
+                <h2 className="form-signin-heading">Sign Up </h2>
+                <label htmlFor="inputEmail" className="sr-only">Email address</label>
+                <input  type="email" id="inputEmail" className="form-control" onBlur={readEmail} name='email' placeholder="input email" defaultValue="a@123.com" required autoFocus />
+                <label htmlFor="inputPassword" className="sr-only">Password</label>
+                <input type="password" id="inputPassword" className="form-control" onBlur={readPassword} name='password' placeholder="input password" />
+                <button className="btn btn-lg btn-primary btn-block" > Signup </button>
             </form>
+            <p>{prompt}</p>
         </div>
     )
 }
 
-
-export default withRouter(SignUp)
+const mapStateToProps = (state)=>({ prompt: state.userData.data.message })
+const SignUpContainer = withRouter( connect(mapStateToProps)(SignUp) )
+export default SignUpContainer

@@ -1,69 +1,54 @@
 
+
 const UserModel = require('./users')
 
-
-function createNewUser(req, res){
-    console.log(req.body.email);
-    return UserModel.create({
-        email: req.body.email,
-        password: req.body.password
+function createNewUser(userData, callback){
+    UserModel.create({
+        email: userData.email,
+        password: userData.password
     }, function(err, user){
         if(err){
-            console.error(err);
-            return res.status(404).json({
-                msg: 'Error: back end: usersUtil-function:createNewUser'
-            })
+            console.log('Error: User already existed');
+            err.msg = 'Error: User already existed'
+            callback(err)
         }
         console.log('New user successfully created');
-        user.token = user.generateJwt();
-        return res.json(user)
+        const token = user.generateJwt();
+        callback(null, user.email, token)
     });
 }
 
 
-function validateUser(req, res){
-    const email = req.body.email
-    const password = req.body.password
+
+function validateUser(userData, callback){
+    const email = userData.email
+    const password = userData.password
 
     UserModel.findOne({email: email}, function( err, user){
         if( err ){
-            console.log(err)
-            return res.json({
-                status: false,
-                message: "Error: backend - usersUtil - validateUser - error in findOne"
-            })
+            err.message = 'Error: backend - usersUtil - validateUser - error in DB'
+            callback(err)
         }
 
         if(!user){
-            return res.json({
-                status: false,
-                message: "Error: backend - usersUtil - validateUser - No such email"
-            })
+            let err = {}
+            err.message =  "Error: backend - usersUtil - validateUser - No such email"
+            callback(err)
         }
 
         user.comparePassword( password, function(err, isMatch){
-            console.log("password: " + user.password );
-            console.log("isMatch: " + isMatch );
             if( err ) {
-                console.log(err);
-                return res.json({
-                    status: false,
-                    message: "Error: backend - usersUtil - validateUser - bcrypt error"
-                })
+                let err = {}
+                err.message =  "Error: backend - usersUtil - validateUser - bcrypt error"
+                callback(err)
             }
             if( !isMatch ){
-                return res.json({
-                    status: false,
-                    message: "Error: backend - usersUtil - validateUser - password mismatch"
-                })
+                let err = {}
+                err.message =  "Error: backend - usersUtil - validateUser - password mismatch"
+                callback(err)
             }
-
-            const jwt = user.generateJwt()
-            return res.json({
-                status: true,
-                email: user.email,
-                token: jwt
-            })
+            const token = user.generateJwt()
+            callback(null, user.email, token)
         })
     })
 }

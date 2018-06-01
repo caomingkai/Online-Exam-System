@@ -4,10 +4,20 @@ const cors = require('cors');
 const bodyParser= require('body-parser')
 const config = require('./config/config'); //全局配置
 const auth = require('./routes/auth')
+const auth_checker = require('./middleware/auth_checker')
 const fetchExam = require('./routes/fetchExam')
 const sendAnswer = require('./routes/sendAnswer')
-const mongoose = require('mongoose');
+const passport = require('passport')
+const mongoose = require('mongoose')
 mongoose.connect(config.dbURL); // 连接数据库
+
+
+// Load passport strategies
+app.use(passport.initialize());
+var localSignupStrategy = require('./passport/signup_passport');
+var localLoginStrategy = require('./passport/login_passport');
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -17,7 +27,9 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html')
 })
 
-app.use('/auth', auth);
+app.use('/auth', auth)
+
+app.use('/api', auth_checker)
 
 app.route('/api/exam')
     .get( function(req, res){
